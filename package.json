@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@shopify/polaris": "^6.5.0",
+    "@shopify/polaris-icons": "^4.5.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -42,6 +44,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.7"
+    "@kaizen/design-tokens": "^2.9.0",
+    "@types/react-router-dom": "^5.1.7",
+    "node-sass": "^6.0.0"
   }
 }
