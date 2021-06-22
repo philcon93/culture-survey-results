@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { Badge, Card, DataTable, Page } from '@shopify/polaris';
 import constants from "../store/constants";
 import { Survey } from '../store/interfaces';
-import { PageLoader } from '../components';
+import { Input, PageLoader } from '../components';
 import { colourGrade, percentage } from "../utilities/format";
+
 
 export const ListingPage: React.FC = () => {
     const [ surveys, setSurveys ] = useState<Survey[]>([]);
+    const [ searchValue, setSearchValue] = useState('');
+    const [ sortDirection, setSortDirection ] = useState<"ascending" | "descending" | "none">("none");
 
     useEffect(() => {
         fetch(constants.ENDPOINT_URL)
@@ -15,14 +18,30 @@ export const ListingPage: React.FC = () => {
             .then(data => setSurveys(data.survey_results));
     }, []);
 
+
+
     return (
         surveys.length > 0 ?
         <Page title='Surveys'>
             <Card sectioned>
+                <Input value={searchValue} onChange={value => setSearchValue(value)}/>
                 <DataTable
                     columnContentTypes={[ 'text', 'numeric','numeric', 'numeric' ]}
                     headings={[ 'Survey', 'Participants', 'Submitted Responses', 'Response Rate' ]}
-                    rows={surveys.map(survey => [
+                    sortable={[ false, false, false, true ]}
+                    onSort={(headingIndex, direction) => setSortDirection(direction)}
+                    defaultSortDirection={sortDirection}
+                    rows={surveys
+                        .filter(survey => {
+                            return Object.values(survey).some(s => s.toString().toLowerCase().includes(searchValue))
+                        })
+                        .sort((surveyA, surveyB) => {
+                            const amountA = surveyA.response_rate
+                            const amountB = surveyB.response_rate
+                      
+                            return sortDirection === 'descending' ? amountB - amountA : amountA - amountB;
+                        })
+                        .map(survey => [
                         <Link to={survey.url}>{survey.name}</Link>,
                         <Badge>{survey.participant_count.toString()}</Badge>,
                         <Badge>{survey.submitted_response_count.toString()}</Badge>,
