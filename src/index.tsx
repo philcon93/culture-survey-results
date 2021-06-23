@@ -4,6 +4,7 @@ import App from './App';
 import {AppProvider} from "@shopify/polaris";
 import en from '@shopify/polaris/locales/en.json';
 import "@shopify/polaris/dist/styles.css";
+import './styles.scss';
 
 ReactDOM.render(
   <React.StrictMode>
