@@ -16,7 +16,7 @@ export const colourGrade = (value: number, total: number): 'critical' | 'warning
 
     if (grade < 0.4) {
         return 'critical';
-    } else if (grade < 0.8) {
+    } else if (grade < 0.77) {
         return 'warning';
     }
 
