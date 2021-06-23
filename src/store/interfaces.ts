@@ -32,3 +32,5 @@ export interface SurveyResponses {
     respondent_id: number,
     response_content: string
 }
+
+export type Sort = "ascending" | "descending" | "none";

@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { Badge, Card, Heading, DataTable, Page } from '@shopify/polaris';
 import constants from "../store/constants";
-import { Detail } from '../store/interfaces';
+import { Detail, Sort } from '../store/interfaces';
 import { PageLoader } from '../components';
 import { average, colourGrade } from "../utilities/format";
 
 export const ViewPage: React.FC = () => {
     const [ details, setDetails ] = useState<Detail>();
+    const [ sortDirection, setSortDirection ] = useState<Sort>('none');
     let { id } = useParams<{ id: string}>();
 
     useEffect(() => {
@@ -27,12 +28,22 @@ export const ViewPage: React.FC = () => {
                     <DataTable
                         columnContentTypes={[ 'text', 'numeric' ]}
                         headings={[ 'Question', 'Average response' ]}
-                        rows={theme.questions.map(question => [
-                            question.description,
-                            <Badge status={colourGrade(average(question.survey_responses), 5)}>
-                                {average(question.survey_responses).toString()}
-                            </Badge>
-                        ])} />
+                        sortable={[ false, true ]}
+                        onSort={(headingIndex, direction) => setSortDirection(direction)}
+                        rows={theme.questions
+                            .sort((questionA, questionB) => {
+                                const amountA = average(questionA.survey_responses)
+                                const amountB = average(questionB.survey_responses)
+                          
+                                return sortDirection === 'descending' ? amountB - amountA : amountA - amountB;
+                            })
+                            .map(question => [
+                                question.description,
+                                <Badge status={colourGrade(average(question.survey_responses), 5)}>
+                                    {average(question.survey_responses).toString()}
+                                </Badge>
+                            ]
+                        )} />
                 </Card>
             ))
         }</Page> : <PageLoader />
