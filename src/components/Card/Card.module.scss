@@ -8,4 +8,12 @@
 	+ .card {
 		margin-top: 1.6rem;
 	}
+
+	&--action {
+		cursor: pointer;
+		
+		&:hover {
+			background-color: var(--p-surface-success);
+		}
+	}
 }
