@@ -4,3 +4,4 @@ export { Footer } from './Footer';
 export { Input } from './Input';
 export { PageLoader } from './PageLoader';
 export { PageTitle } from './PageTitle';
+export { ListingTable, ViewTable } from './Table';

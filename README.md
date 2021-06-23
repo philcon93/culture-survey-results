@@ -1,6 +1,6 @@
 # Goat Surveys
 
-[goat-surveys.vercel.app](goat-surveys.vercel.app)
+[goat-surveys.vercel.app](https://goat-surveys.vercel.app)
 
 ## Available Scripts
 
