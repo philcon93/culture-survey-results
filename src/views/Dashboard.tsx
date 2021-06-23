@@ -26,7 +26,7 @@ export const DashboardPage: React.FC = () => {
             </Card>
             <Card onClick={() => history.push(constants.LISTING_ROUTE)}>
                 <Heading>Employee Surveys</Heading>
-                <TextStyle>View your Survey scores, how each survey question was answered, and understand your people.</TextStyle>
+                <TextStyle variation="subdued">View your Survey scores, how each survey question was answered, and understand your people.</TextStyle>
             </Card>
             <Card>
                 <Heading>Performance Management <TextStyle variation="subdued">- Coming Soon!</TextStyle></Heading>
