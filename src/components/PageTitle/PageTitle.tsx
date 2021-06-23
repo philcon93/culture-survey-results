@@ -12,21 +12,22 @@ type Props = {
 
 export const PageTitle = ({ breadcrumb, title } : Props) => {
     const history = useHistory();
-  return (
-    <div className={styles.pagetitle}>
-        <div className={styles['pagetitle--row']}>
-            {
-                breadcrumb &&
-                <div className={styles['pagetitle--button']}>
-                    <Breadcrumb onClick={() => history.push(breadcrumb.url)}>
-                        <Icon source={MobileBackArrowMajor} color="base" />
-                    </Breadcrumb>
+
+    return (
+        <div className={styles.pagetitle}>
+            <div className={styles['pagetitle--row']}>
+                {
+                    breadcrumb &&
+                    <div className={styles['pagetitle--button']}>
+                        <Breadcrumb onClick={() => history.push(breadcrumb.url)}>
+                            <Icon source={MobileBackArrowMajor} color="base" />
+                        </Breadcrumb>
+                    </div>
+                }
+                <div className={styles['pagetitle--title-wrapper']}>
+                    <h1 className={styles['pagetitle--title']}>{title}</h1>
                 </div>
-            }
-            <div className={styles['pagetitle--title-wrapper']}>
-                <h1 className={styles['pagetitle--title']}>{title}</h1>
             </div>
         </div>
-    </div>
-  );
+    );
 }

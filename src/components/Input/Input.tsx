@@ -23,6 +23,5 @@ export const Input = ({ type, placeholder, value, onChange } : Props) => {
 }
 
 Input.defaultProps = {
-  placeholder: 'Search Surveys...',
   type: 'text'
 };

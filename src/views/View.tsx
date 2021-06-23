@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { Badge, Card, Heading, DataTable, Page } from '@shopify/polaris';
+import { Badge, Heading, DataTable } from '@shopify/polaris';
 import constants from "../store/constants";
 import { Detail, Sort } from '../store/interfaces';
-import { PageLoader, PageTitle } from '../components';
+import { Card, PageLoader, PageTitle } from '../components';
 import { average, colourGrade } from "../utilities/format";
 
 export const ViewPage: React.FC = () => {
@@ -21,10 +21,10 @@ export const ViewPage: React.FC = () => {
 
     return (
         details ?
-        <Page breadcrumbs={[{content: 'Surveys', url: '/surveys'}]} title={details.name}>
+        <>
             <PageTitle title={details.name} breadcrumb={{ url: '/surveys'}}/>
             { details.themes.map((theme, index) => (
-                <Card sectioned key={index}>
+                <Card key={index}>
                     <Heading>{theme.name}</Heading>
                     <DataTable
                         columnContentTypes={[ 'text', 'numeric' ]}
@@ -46,7 +46,7 @@ export const ViewPage: React.FC = () => {
                             ]
                         )} />
                 </Card>
-            ))
-        }</Page> : <PageLoader />
+            ))}
+        </> : <PageLoader />
     );
 };
