@@ -1,16 +1,18 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { Icon } from '@shopify/polaris';
+import { Badge, Button, Icon } from '@shopify/polaris';
 import { MobileBackArrowMajor } from '@shopify/polaris-icons';
 import { Breadcrumb } from '../index';
 import styles from "./PageTitle.module.scss";
 
 type Props = {
+    action?: { content: string, onAction: () => void },
+    badge?: { content: string, type: 'critical' | 'warning' | 'success' }
+    breadcrumb?: { url: string },
     title: string,
-    breadcrumb?: { url: string }
 }
 
-export const PageTitle: React.FC<Props> = ({ breadcrumb, title } : Props) => {
+export const PageTitle: React.FC<Props> = ({ action, badge, breadcrumb, title } : Props) => {
     const history = useHistory();
 
     return (
@@ -26,7 +28,14 @@ export const PageTitle: React.FC<Props> = ({ breadcrumb, title } : Props) => {
                 }
                 <div className={styles['pagetitle--title-wrapper']}>
                     <h1 className={styles['pagetitle--title']}>{title}</h1>
+                    { badge && <Badge status={badge.type}>{`${badge.content} participation rate`}</Badge> }
                 </div>
+                {
+                    action && 
+                    <div className={styles['pagetitle--action']}>
+                        <Button primary onClick={action.onAction}>{action.content}</Button>
+                    </div>
+                }
             </div>
         </div>
     );

@@ -5,6 +5,7 @@ import { Heading } from '@shopify/polaris';
 import constants from "../store/constants";
 import { Detail, PageStatus } from '../store/interfaces';
 import { Card, PageEmptyState, PageLoader, PageTitle, ViewTable } from '../components';
+import { colourGrade, percentage } from "../utilities/format";
 
 export const ViewPage: React.FC = () => {
     const [ pageStatus, setPageStatus ] = useState<PageStatus>(PageStatus.Loading);
@@ -41,7 +42,10 @@ export const ViewPage: React.FC = () => {
     return (
         pageStatus === PageStatus.Success && details ?
         <>
-            <PageTitle title={details.name} breadcrumb={{ url: constants.LISTING_ROUTE}}/>
+            <PageTitle
+                title={details.name}
+                badge={{ content: percentage(details.response_rate), type: colourGrade(details.response_rate, 1)}}
+                breadcrumb={{ url: constants.LISTING_ROUTE}} />
             { details.themes.map((theme, index) => (
                 <Card key={index}>
                     <Heading>{theme.name}</Heading>
