@@ -3,6 +3,19 @@ body {
 	overflow-x: hidden;
 }
 
-.Polaris-DataTable__Cell--sortable button {
-	color: var(--p-interactive-hovered);
+.Polaris {
+	&-DataTable__Cell--sortable button {
+		color: var(--p-interactive-hovered);
+	}
+
+	&-EmptyState {
+		&__ImageContainer {
+			padding-bottom: 2rem;
+		}
+
+		&__Image {
+			border-radius: 100%;
+			max-width: 200px;	
+		}
+	}
 }

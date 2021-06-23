@@ -33,4 +33,11 @@ export interface SurveyResponses {
     response_content: string
 }
 
-export type Sort = "ascending" | "descending" | "none";
+export type Sort = 'ascending' | 'descending' | 'none';
+
+export enum PageStatus {
+    Loading = 'Loading',
+    Success = 'Success',
+    Error = 'Error',
+    Update = 'Update'
+}

@@ -3,15 +3,16 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import { Page } from '@shopify/polaris';
 import { ListingPage, ViewPage } from './views';
 import { Footer } from './components';
+import constants from './store/constants';
 
 const App: React.FC = () => {
   return (
     <Page>
       <Router>
           <Switch>
-              <Route path={'/'} exact={true}><Redirect to="/surveys" /></Route>
-              <Route path={'/surveys'} exact={true} component={ListingPage} />
-              <Route path={'/surveys/:id'} component={ViewPage} />
+              <Route path={'/'} exact={true}><Redirect to={constants.LISTING_ROUTE} /></Route>
+              <Route path={constants.LISTING_ROUTE} exact={true} component={ListingPage} />
+              <Route path={constants.VIEW_ROUTE} component={ViewPage} />
           </Switch>
       </Router>
       <Footer>&copy; {new Date().getFullYear()} Goat Surveys</Footer>
