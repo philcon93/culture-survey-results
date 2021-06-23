@@ -3,6 +3,7 @@ const constants = {
     DASHBOARD_ROUTE: '/',
     LISTING_ROUTE: '/surveys',
     VIEW_ROUTE: '/surveys/:id',
+    COMPANY_NAME: 'Goat Surveys'
 }
 
 export default constants;

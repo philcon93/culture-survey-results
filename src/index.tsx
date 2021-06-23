@@ -6,13 +6,14 @@ import en from '@shopify/polaris/locales/en.json';
 import "@shopify/polaris/dist/styles.css";
 import './styles/styles.scss';
 import home from './images/HomeMajor.svg'
+import constants from './store/constants';
 
 const theme = {
   logo: {
     width: 30,
     topBarSource: home,
     url: '/',
-    accessibilityLabel: 'Goat Surveys'
+    accessibilityLabel: constants.COMPANY_NAME
   },
 };
 

@@ -16,7 +16,7 @@ const App: React.FC = () => {
             <Route path={constants.DASHBOARD_ROUTE} exact={true} component={DashboardPage} />
             <Redirect to={constants.DASHBOARD_ROUTE} />
         </Switch>
-        <Footer>&copy; {new Date().getFullYear()} Goat Surveys</Footer>
+        <Footer>&copy; {new Date().getFullYear()} {constants.COMPANY_NAME}</Footer>
       </Page>
     </Router>
   );

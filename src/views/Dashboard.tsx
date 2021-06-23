@@ -14,7 +14,7 @@ export const DashboardPage: React.FC = () => {
                 <Container>
                     <Row>
                         <Col md={6}>
-                            <DisplayText size="extraLarge">Welcome to Goat Surveys</DisplayText><br/>
+                            <DisplayText size="extraLarge">Welcome to {constants.COMPANY_NAME}</DisplayText><br/>
                             <TextStyle>Empower your teams and fuel positive change with employee surveys, performance, and development tools – all in one intuitive platform.</TextStyle>
                         </Col>
                         <Col md={6}>
