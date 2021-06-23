@@ -9,7 +9,7 @@ import { average, colourGrade } from "../utilities/format";
 export const ViewPage: React.FC = () => {
     const [ details, setDetails ] = useState<Detail>();
     const [ sortDirection, setSortDirection ] = useState<Sort>('none');
-    let { id } = useParams<{ id: string}>();
+    const { id } = useParams<{ id: string}>();
 
     useEffect(() => {
         if (id) {

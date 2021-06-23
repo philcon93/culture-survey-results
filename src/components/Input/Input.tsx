@@ -5,11 +5,11 @@ import { SearchMinor } from '@shopify/polaris-icons';
 type Props = {
   onChange: (value: string) => void,
   placeholder: string,
-  type: 'text' | 'number',
+  type?: 'text' | 'number',
   value: string
 }
 
-export const Input = ({ type, placeholder, value, onChange } : Props) => {
+export const Input: React.FC<Props> = ({ type, placeholder, value, onChange } : Props) => {
   return (
     <TextField
       label=''

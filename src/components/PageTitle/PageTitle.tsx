@@ -10,7 +10,7 @@ type Props = {
     breadcrumb?: { url: string }
 }
 
-export const PageTitle = ({ breadcrumb, title } : Props) => {
+export const PageTitle: React.FC<Props> = ({ breadcrumb, title } : Props) => {
     const history = useHistory();
 
     return (

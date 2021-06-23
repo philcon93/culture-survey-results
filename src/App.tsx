@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { Page } from '@shopify/polaris';
 import { ListingPage, ViewPage } from './views';
-import { Footer } from './components'
+import { Footer } from './components';
 
-function App() {
+const App: React.FC = () => {
   return (
     <Page>
       <Router>

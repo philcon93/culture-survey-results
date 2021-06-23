@@ -1,10 +1,11 @@
 .card {
-    padding: 2rem;
-    background-color: var(--p-surface);
-    box-shadow: var(--p-card-shadow, 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15));
-    outline: 0.1rem solid transparent;
-    border-radius: var(--p-border-radius-wide, 3px);
-    + .card {
-        margin-top: 1.6rem;
-    }
+	background-color: var(--p-surface);
+	border-radius: var(--p-border-radius-wide, 3px);
+	box-shadow: var(--p-card-shadow, 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15));
+	outline: 0.1rem solid transparent;
+	padding: 2rem;
+
+	+ .card {
+		margin-top: 1.6rem;
+	}
 }

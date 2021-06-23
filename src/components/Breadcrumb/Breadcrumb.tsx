@@ -6,7 +6,7 @@ type Props = {
     onClick?: () => void
 }
 
-export const Breadcrumb = ({ children, onClick } : Props) => {
+export const Breadcrumb: React.FC<Props> = ({ children, onClick } : Props) => {
   return (
     <button className={styles.breadcrumb} onClick={onClick}>
         <span className={styles['breadcrumb--content']}>{children}</span>
