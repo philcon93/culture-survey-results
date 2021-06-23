@@ -28,7 +28,7 @@ export const ViewPage: React.FC = () => {
                     <Heading>{theme.name}</Heading>
                     <DataTable
                         columnContentTypes={[ 'text', 'numeric' ]}
-                        headings={[ 'Question', 'Average response' ]}
+                        headings={[ 'Question', 'Average Response' ]}
                         sortable={[ false, true ]}
                         onSort={(headingIndex, direction) => setSortDirection(direction)}
                         rows={theme.questions

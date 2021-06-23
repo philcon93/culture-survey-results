@@ -10,5 +10,11 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
+
+## Functionality
+
+- Two routes that loads in data from third party api
+- Going to an incorrect route will display an error page prompting users to go back to the main survey listing page.
+- User can search the surveys to narrow their results.
+- User can sort by 'Response Rate' and 'Average Response' to see the results in ascending or desceding order. 

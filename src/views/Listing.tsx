@@ -27,7 +27,7 @@ export const ListingPage: React.FC = () => {
                     value={searchValue}
                     onChange={value => setSearchValue(value)} />
                 <DataTable
-                    columnContentTypes={[ 'text', 'numeric','numeric', 'numeric' ]}
+                    columnContentTypes={[ 'text', 'numeric', 'numeric', 'numeric' ]}
                     headings={[ 'Survey', 'Participants', 'Submitted Responses', 'Response Rate' ]}
                     sortable={[ false, false, false, true ]}
                     onSort={(headingIndex, direction) => setSortDirection(direction)}
