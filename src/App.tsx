@@ -10,9 +10,9 @@ const App: React.FC = () => {
     <Page>
       <Router>
           <Switch>
-              <Route path={'/'} exact={true}><Redirect to={constants.LISTING_ROUTE} /></Route>
               <Route path={constants.LISTING_ROUTE} exact={true} component={ListingPage} />
               <Route path={constants.VIEW_ROUTE} component={ViewPage} />
+              <Route path={'/'}><Redirect to={constants.LISTING_ROUTE} /></Route>
           </Switch>
       </Router>
       <Footer>&copy; {new Date().getFullYear()} Goat Surveys</Footer>
