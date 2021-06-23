@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Badge, Card, DataTable, Page } from '@shopify/polaris';
 import constants from "../store/constants";
 import { Sort, Survey } from '../store/interfaces';
-import { Input, PageLoader } from '../components';
+import { Input, PageLoader, PageTitle } from '../components';
 import { colourGrade, percentage } from "../utilities/format";
 
 export const ListingPage: React.FC = () => {
@@ -20,6 +20,7 @@ export const ListingPage: React.FC = () => {
     return (
         surveys.length > 0 ?
         <Page title='Surveys'>
+            <PageTitle title='Surveys'/>
             <Card sectioned>
                 <Input value={searchValue} onChange={value => setSearchValue(value)}/>
                 <DataTable

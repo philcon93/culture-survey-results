@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Badge, Card, Heading, DataTable, Page } from '@shopify/polaris';
 import constants from "../store/constants";
 import { Detail, Sort } from '../store/interfaces';
-import { PageLoader } from '../components';
+import { PageLoader, PageTitle } from '../components';
 import { average, colourGrade } from "../utilities/format";
 
 export const ViewPage: React.FC = () => {
@@ -21,8 +21,9 @@ export const ViewPage: React.FC = () => {
 
     return (
         details ?
-        <Page breadcrumbs={[{content: 'Surveys', url: '/surveys'}]} title={details.name}>{
-            details.themes.map((theme, index) => (
+        <Page breadcrumbs={[{content: 'Surveys', url: '/surveys'}]} title={details.name}>
+            <PageTitle title={details.name} breadcrumb={{ url: '/surveys'}}/>
+            { details.themes.map((theme, index) => (
                 <Card sectioned key={index}>
                     <Heading>{theme.name}</Heading>
                     <DataTable
