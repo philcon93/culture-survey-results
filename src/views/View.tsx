@@ -48,7 +48,7 @@ export const ViewPage: React.FC = () => {
                 breadcrumb={{ url: constants.LISTING_ROUTE}} />
             { details.themes.map((theme, index) => (
                 <Card key={index}>
-                    <Heading>{theme.name}</Heading>
+                    <Heading>Theme: {theme.name}</Heading>
                     <ViewTable questions={theme.questions} />
                 </Card>
             ))}
