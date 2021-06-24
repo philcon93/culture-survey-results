@@ -1,33 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom';
 import { Heading } from '@shopify/polaris';
 import constants from "../store/constants";
-import { Detail, PageStatus } from '../store/interfaces';
+import { PageStatus } from '../store/interfaces';
 import { Card, PageEmptyState, PageLoader, PageTitle, ViewTable } from '../components';
 import { colourGrade, percentage } from "../utilities/format";
+import { useStore } from "../store/store";
 
 export const ViewPage: React.FC = () => {
-    const [ pageStatus, setPageStatus ] = useState<PageStatus>(PageStatus.Loading);
-    const [ details, setDetails ] = useState<Detail>();
     const { id } = useParams<{ id: string}>();
     const history = useHistory();
+    const fetchDetails = useStore(state => state.fetchDetails);
+    const details = useStore(state => state.details);
+    const pageStatus = useStore(state => state.pageStatus);
 
     useEffect(() => {
         if (id) {
-            fetch(`${constants.ENDPOINT_URL}/${id}`)
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error('Something went wrong');
-                    }
-                })
-                .then(data => {
-                    setDetails(data.survey_result_detail);
-                    setPageStatus(PageStatus.Success);
-                })
-                .catch(() => setPageStatus(PageStatus.Error));
+            fetchDetails(id);
         }
     }, [ id ]);
 

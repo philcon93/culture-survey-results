@@ -1,29 +1,18 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Modal, TextContainer } from '@shopify/polaris';
-import constants from "../store/constants";
-import { PageStatus, Survey } from '../store/interfaces';
+import { PageStatus } from '../store/interfaces';
 import { Card, Input, ListingTable, PageEmptyState, PageLoader, PageTitle } from '../components';
+import { useStore } from "../store/store";
 
 export const ListingPage: React.FC = () => {
-    const [ pageStatus, setPageStatus ] = useState<PageStatus>(PageStatus.Loading);
-    const [ surveys, setSurveys ] = useState<Survey[]>([]);
     const [ searchValue, setSearchValue] = useState('');
     const [ showModal, setShowModal ] = useState(false);
+    const fetchSurveys = useStore(state => state.fetchSurveys);
+    const pageStatus = useStore(state => state.pageStatus);
+    const surveys = useStore(state => state.surveys);
 
     useEffect(() => {
-        fetch(constants.ENDPOINT_URL)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Something went wrong');
-                }
-            })
-            .then(data => {
-                setSurveys(data.survey_results);
-                setPageStatus(PageStatus.Success);
-            })
-            .catch(() => setPageStatus(PageStatus.Error));
+        fetchSurveys();
     }, []);
 
     const handleModalChange = useCallback(() => setShowModal(!showModal), [showModal]);
